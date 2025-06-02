@@ -1,0 +1,147 @@
+/* Global widget styles - These will be injected into Shadow DOM */
+
+/* Reset and base styles */
+* {
+  box-sizing: border-box;
+}
+
+/* Ensure no conflicts with host page styles */
+.ff-reset {
+  all: initial;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen,
+    Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+/* Utility classes */
+.ff-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.ff-no-scroll {
+  overflow: hidden !important;
+}
+
+/* Animation keyframes */
+@keyframes ff-fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes ff-slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes ff-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+/* Focus styles for accessibility */
+.ff-focus-visible:focus {
+  outline: 2px solid #007bff;
+  outline-offset: 2px;
+}
+
+/* Loading spinner */
+.ff-spinner {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid transparent;
+  border-top: 2px solid currentColor;
+  border-radius: 50%;
+  animation: ff-spin 1s linear infinite;
+}
+
+@keyframes ff-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Error states */
+.ff-error {
+  color: #dc3545;
+  background-color: #f8d7da;
+  border: 1px solid #f5c6cb;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+/* Success states */
+.ff-success {
+  color: #155724;
+  background-color: #d4edda;
+  border: 1px solid #c3e6cb;
+  border-radius: 4px;
+  padding: 8px 12px;
+  font-size: 14px;
+}
+
+/* Theme variations */
+[data-theme="dark"] {
+  --ff-bg: #1a1a1a;
+  --ff-text: #ffffff;
+  --ff-border: #333333;
+  --ff-primary: #0d6efd;
+}
+
+[data-theme="light"] {
+  --ff-bg: #ffffff;
+  --ff-text: #333333;
+  --ff-border: #dddddd;
+  --ff-primary: #007bff;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+  .ff-button {
+    border: 2px solid currentColor;
+  }
+
+  .ff-modal {
+    border: 2px solid currentColor;
+  }
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Print styles */
+@media print {
+  .ff-floating-button,
+  .ff-modal-overlay {
+    display: none !important;
+  }
+}
